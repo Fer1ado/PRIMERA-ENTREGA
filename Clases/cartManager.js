@@ -24,7 +24,7 @@ export default class CartManager {
         const cart = new Cart()
         const parseCart = JSON.parse(await fs.readFile(cartRoute, "utf-8"))
         const remplazo = parseCart.concat(cart)
-        await fs.writeFile(cartRoute, JSON.stringify(remplazo))
+        await fs.writeFile(cartRoute, JSON.stringify(remplazo, null, 2))
         return{status: "success", message: "NUEVO CARRITO DE COMPRAS CREADO", carrito: cart}}
     catch(err){
         return{status: "failed", message: err.message}
@@ -53,7 +53,7 @@ export default class CartManager {
         const nuevoitem = {cartId: cid, products: [...nuevoarray]}
         const nuevoJson = parseCart.filter((e) => e.cartId != cid);
         const remplazo = nuevoJson.concat(nuevoitem);
-        await fs.writeFile(cartRoute, JSON.stringify(remplazo));
+        await fs.writeFile(cartRoute, JSON.stringify(remplazo, null, 2));
         console.log(`Hay ${item.quantity} unidad del producto ${pid} agregada en Carrito `)
         return {status: "success", message: "SE AGREGARON PRODUCTOS AL CARRITO EXITOSAMENTE", producto: nuevoitem}
       }
@@ -73,12 +73,12 @@ export default class CartManager {
       const objRemplazo = {...productToUpdate, products: nuevoarray }
       const nuevoJson = parseCart.filter((e) => e.cartId != cid);
       const remplazo = nuevoJson.concat(objRemplazo);
-      await fs.writeFile(cartRoute, JSON.stringify(remplazo));
+      await fs.writeFile(cartRoute, JSON.stringify(remplazo, null, 2));
       console.log(`Hay ${final.quantity} unidades del producto ${pid} en Carrito `)
-      return {status: "success", message: "se agregaron productos al carrito", producto: objRemplazo}}
+      return {status: "success", message: `AUMENTASTE CANTIDAD DEL PRODUCTO ID: ${pid}` , producto: objRemplazo}}
       
     else{
-        return {status: "failed", message: "Algo salió mal y no sabemos bien que"}}
+        return {status: "failed", message: "ALGO SALIO MAL Y NO SABEMOS QUE"}}
     } 
     catch(err){
       return {status: "failed", message: err.message}
@@ -122,7 +122,7 @@ export default class CartManager {
     }
 
     catch(e){
-      console.error("Error al realizar la operacion", e.message)
+      console.error("ERROR AL REALIZAR LA OPERACION", e.message)
     }
   }
 
@@ -149,7 +149,7 @@ export default class CartManager {
     }
 
     catch(e){
-      console.error("Error al realizar la operacion", e.message)
+      console.error("ERROR AL REALIZAR LA OPERACION", e.message)
     }
   }
 
