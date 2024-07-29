@@ -63,14 +63,14 @@ export default class CartManager {
     }
 
     if (added === "aumentar cantidad") {
-      const productToUpdate = parseCart.find(e => e.products.find(prod => prod.productid === pid));
-      const edicion = productToUpdate.products.find(prod => prod.productid === pid)
-      const cantidad = productToUpdate.products.find(prod => prod.productid === pid).quantity
+      const cartToUpdate = parseCart.find(e => e.products.find(prod => prod.productid === pid));
+      const edicion = cartToUpdate.products.find(prod => prod.productid === pid)
+      const cantidad = cartToUpdate.products.find(prod => prod.productid === pid).quantity
       const final = {...edicion, quantity: cantidad +1}
-      const existencia = productToUpdate.products
+      const existencia = cartToUpdate.products
       const filtrado = existencia.filter(prod => prod.productid != pid)
       const nuevoarray = [...filtrado, final]
-      const objRemplazo = {...productToUpdate, products: nuevoarray }
+      const objRemplazo = {...cartToUpdate, products: nuevoarray }
       const nuevoJson = parseCart.filter((e) => e.cartId != cid);
       const remplazo = nuevoJson.concat(objRemplazo);
       await fs.writeFile(cartRoute, JSON.stringify(remplazo, null, 2));
@@ -83,7 +83,6 @@ export default class CartManager {
     catch(err){
       return {status: "failed", message: err.message}
     }
-
   }
     
   async isAdded(cid, pid){
