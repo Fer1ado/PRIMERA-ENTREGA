@@ -14,7 +14,7 @@
 | :--- | :---: | :---: |:---: |
 | GET  | /  | Saludo  | "Hola Mundo"  |
 | GET | /api/products/:pid | Devuelve el producto que matchee el id ingresado | |
-| GET | /api/products/list/:limit?|  Devuelve listado de productos con limite de registros| Sé que no esta pedido, pero hice este curso en otra oportunidad y se que hay que incluir la funcionalidad mas adelante|
+| GET | /api/products/list/:limit?|  Devuelve listado de productos con limite de registros| El limit no esta pedido, pero hice este curso en otra oportunidad y se que hay que incluir la funcionalidad mas adelante|
 | GET POST| /api/products| POST: Recibe un body con información y genera una entrada nueva en la base de datos GET: Devuelve el listado completod e productos | Realiza algunos chequeos básicos para evitar entradas repetidas y que no falten campos |
 | PUT DELETE | /api/products/:id | DELETE borra item que coincida con el ID ingresado de la base de datos, PUT modifica el item que coincida con el ID ingresado en la base de datos | Realiza chequeos básicos para que no falten campos  |
 | GET POST| /api/cart | POST: Crea un carrito nuevo GET: Devuelve listado completo de carritos creados | El GET no esta pedido pero es mas simple para el testing |
