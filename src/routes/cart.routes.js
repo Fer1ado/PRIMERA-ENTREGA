@@ -9,6 +9,10 @@ cartRoute.get("/:cid", async(req, res)=>{
     res.send(await carro.getCarrito(cid))
 })
 
+cartRoute.get("/", async(req, res)=>{
+    res.send(await carro.getCarrito(0))
+})
+
 cartRoute.post("/",async (req, res) => {
     const cart = res.send(await carro.createCart());
 })

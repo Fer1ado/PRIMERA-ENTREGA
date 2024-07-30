@@ -13,10 +13,28 @@ export default class CartManager {
   }
 
   async getCarrito(cid){
-    const producto = JSON.parse(await fs.readFile(cartRoute, "utf-8"));
-    const entrega = producto.find((e) => e.cartId === parseInt(cid))
-    console.log(entrega)
-    return entrega;
+    const cart = JSON.parse(await fs.readFile(cartRoute, "utf-8"));
+    try{
+        if(!cid){
+          console.log("LISTADO DE CARRITOS COMPLETO")
+          console.table(cart)
+          return {status: "Success", message: "LISTADO COMPLETO DE CARRITOS", cart: cart}
+        }
+        else{
+            const entrega = cart.find((e) => e.cartId === parseInt(cid))
+            if(entrega === undefined){
+              return {status: "failed", message: "NO HAY CARRITO CON ESE ID"}
+            }
+            else{
+              console.log(entrega)
+              return {status: "success", message: `CONTENIDO DE CARRITO CON ID ${cid}`, entrega}
+            }
+           
+        }
+    }
+    catch(err){
+        return{status: "failed", message: err.message}
+    }
   }
 
   async createCart() {
