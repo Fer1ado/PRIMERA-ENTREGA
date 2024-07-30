@@ -12,16 +12,20 @@ prodRoute.get("/:pid", async (req, res) => {
 
 });
 
-//Pedido de listado completo
+//Pedido de listado con limite
 prodRoute.get("/list/:limit?", async (req,res)=>{
   const limit = parseInt(req.params.limit)
   res.send(await ejecutar.getProducts(limit))
-  
+})
+
+//Pedido de listado completo
+prodRoute.get("/", async (req,res)=>{
+  res.send(await ejecutar.getProducts(0))
 })
 
 //Subida de productos
 prodRoute.post("/", async (req, res) => {
- res.send(await ejecutar.addProduct(req.body))
+  res.send(await ejecutar.addProduct(req.body))
 
 });
 
