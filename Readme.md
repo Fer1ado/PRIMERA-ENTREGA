@@ -17,7 +17,7 @@
 | GET | /api/products/list/:limit?|  Devuelve listado de productos con limite de registros| Sé que no esta pedido, pero hice este curso en otra oportunidad y se que hay que incluir la funcionalidad mas adelante|
 | GET POST| /api/products| POST: Recibe un body con información y genera una entrada nueva en la base de datos GET: Devuelve el listado completod e productos | Realiza algunos chequeos básicos para evitar entradas repetidas y que no falten campos |
 | PUT DELETE | /api/products/:id | DELETE borra item que coincida con el ID ingresado de la base de datos, PUT modifica el item que coincida con el ID ingresado en la base de datos | Realiza chequeos básicos para que no falten campos  |
-| GET POST| /api/cart | POST: Crea un carrito nuevo GET: Devuelve listado completo de carritos creados | No esta pedido pero es mas simple para el testing |
+| GET POST| /api/cart | POST: Crea un carrito nuevo GET: Devuelve listado completo de carritos creados | El GET no esta pedido pero es mas simple para el testing |
 | POST | /api/cart/:cid/product/:pid| Agrega productos al carrito de acuerdo al Id de carrito y producto a agregar | |
 | GET DELETE | /api/cart/:cid | GET: Devuelve el contenido del carrito, DELETE: borra el carrito de la base de datos | |
 
